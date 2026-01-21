@@ -1,0 +1,54 @@
+{
+  "signIn": {
+    "title": "You are welcome!",
+    "description": "Please log in to continue and access your account!",
+    "emailInputLabel": "Email:",
+    "emailInputPlaceholder": "Enter your email",
+    "passwordInputLabel": "Password:",
+    "passwordInputPlaceholder": "Enter your password",
+    "forgotPassword": "Forgot your password?",
+    "formButton": "Sign in"
+  },
+
+  "forgotPassword": {
+    "title": "Forgot your password?",
+    "description": "Follow the steps to reset your password",
+    "emailInputLabel": "Enter your email:",
+    "button": "Confirm",
+    "backToLogin": "Remembered your password?",
+    "sentTitle": "Email sent!",
+    "sentDescription": "Check your inbox to reset your password.",
+    "switchType": "Click here"
+  },
+
+  "chooseProfile": {
+    "title": "How would you like to proceed?",
+    "description": "Choose your profile type and click one of the options below to continue your access:",
+    "participantTitle": "I am a participant",
+    "participantDescription": "Access my tickets, request and track cancellations and ticket ownership transfers.",
+    "organizerTitle": "I am an organizer",
+    "organizerDescription": "Create and manage events, registrations, participants, finances, and all the tools for managing and promoting events on the platform."
+  },
+
+  "changeForgotPassword": {
+    "title": "Set a new password",
+    "description": "Create a new password and regain access to your account",
+    "newPasswordInputLabel": "Enter your new password:",
+    "confirmPasswordInputLabel": "Confirm your new password:",
+    "button": "Submit",
+    "changedTitle": "Password successfully recovered!",
+    "changedDescription": "You can now log in to your account with the new password.",
+    "backToLogin": "Back to login"
+  },
+
+  "verifyEmail": {
+    "title": "Verify your email",
+    "description": "We have sent a verification code to {{email}}. Please enter the code below to continue.",
+    "codeInputLabel": "Enter the verification code:",
+    "notReceived": "Did not receive the code?",
+    "resendCode": "Resend",
+    "button": "Verify now",
+    "cantResend": "You can request a new code in {{minutes}}:{{seconds}}",
+    "anotherEmail": "Access with another email"
+  }
+}

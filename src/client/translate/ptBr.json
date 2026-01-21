@@ -1,0 +1,54 @@
+{
+  "signIn": {
+    "title": "Seja bem-vindo(a)! ",
+    "description": "Faça login para continuar e acessar sua conta!",
+    "emailInputLabel": "E-mail:",
+    "emailInputPlaceholder": "Digite seu e-mail",
+    "passwordInputLabel": "Senha:",
+    "passwordInputPlaceholder": "Digite sua senha",
+    "forgotPassword": "Esqueceu sua senha?",
+    "formButton": "Entrar"
+  },
+
+  "forgotPassword": {
+    "title": "Esqueceu a senha?",
+    "description": "Siga os passos para redefinir a senha",
+    "emailInputLabel": "Digite seu e-mail:",
+    "button": "Confirmar",
+    "backToLogin": "Lembrou sua senha?",
+    "sentTitle": "E-mail enviado!",
+    "sentDescription": "Verifique sua caixa de entrada para redefinir sua senha.",
+    "switchType": "Clique aqui"
+  },
+
+  "chooseProfile": {
+    "title": "Como deseja prosseguir?",
+    "description": "Escolha o seu tipo de perfil e clique em uma das opções abaixo para continuar o seu acesso:",
+    "participantTitle": "Sou participante",
+    "participantDescription": "Acessar meus ingressos, solicitar e acompanhar cancelamentos e trocas de titularidade de ingressos.",
+    "organizerTitle": "Sou organizador",
+    "organizerDescription": "Criar e gerenciar eventos, inscrições, participantes, financeiro e todas as ferramentas para gestão e divulgação de eventos da plataforma."
+  },
+
+  "changeForgotPassword": {
+    "title": "Defina uma nova senha",
+    "description": "Crie uma nova senha e recupere o acesso à sua conta",
+    "newPasswordInputLabel": "Digite sua nova senha:",
+    "confirmPasswordInputLabel": "Confirme sua nova senha:",
+    "button": "Enviar",
+    "changedTitle": "Senha recuperada com sucesso!",
+    "changedDescription": "Agora você já pode fazer login na sua conta com a nova senha.",
+    "backToLogin": "Voltar ao login"
+  },
+
+  "verifyEmail": {
+    "title": "Verifique seu e-mail",
+    "description": "Enviamos um código de verificação para {{email}}. Insira o código abaixo para continuar.",
+    "codeInputLabel": "Digite o código de verificação:",
+    "notReceived": "Não recebeu o código?",
+    "resendCode": "Reenviar",
+    "button": "Verificar agora",
+    "cantResend": "Você pode solicitar um novo código em {{minutes}}:{{seconds}}",
+    "anotherEmail": "Acessar com outro e-mail"
+  }
+}
