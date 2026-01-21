@@ -18,7 +18,7 @@ function PropertiesMap() {
   const closeInfoWindow = () => setInfoWindowIndex(undefined);
 
   function handleGoToPropertyDetails(id: string) {
-    navigate(`/admin/properties/${id}`);
+    navigate(`/panel/properties/${id}`);
   }
 
   function mapCoordinates() {

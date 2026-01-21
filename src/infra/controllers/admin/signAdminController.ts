@@ -26,7 +26,7 @@ class SignAdminController {
         type: "admin",
         token,
       },
-      "/admin/dashboard",
+      "/panel/dashboard",
     );
   }
 }

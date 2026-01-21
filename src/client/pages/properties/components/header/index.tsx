@@ -15,7 +15,7 @@ function Header() {
       {showTo("admin") && (
         <Button
           leftIcon={Plus}
-          onClick={() => navigate(`/admin/properties/create`)}
+          onClick={() => navigate(`/panel/properties/create`)}
         >
           Adicionar
         </Button>

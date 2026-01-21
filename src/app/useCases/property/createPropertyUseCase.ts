@@ -27,7 +27,7 @@ class CreatePropertyUseCase {
 
   async execute(input: InputProps, token: string) {
     await this.propertyGateway.createProperty(input, token);
-    throw RedirectServerAdapter.to("/admin/properties");
+    throw RedirectServerAdapter.to("/panel/properties");
   }
 }
 

@@ -28,7 +28,7 @@ class UpdatePropertyUseCase {
 
   async execute(input: InputProps, token: string) {
     await this.propertyGateway.updateProperty(input, token);
-    throw RedirectServerAdapter.to("/admin/properties");
+    throw RedirectServerAdapter.to("/panel/properties");
   }
 }
 

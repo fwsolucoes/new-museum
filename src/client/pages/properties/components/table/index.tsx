@@ -134,7 +134,7 @@ function Table() {
                     variant="invisible"
                     scheme="warning"
                     onClick={() =>
-                      navigate(`/admin/properties/${property.id}/update`)
+                      navigate(`/panel/properties/${property.id}/update`)
                     }
                   />,
                   <IconButton
