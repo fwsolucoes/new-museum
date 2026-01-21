@@ -1,11 +1,10 @@
-import type { Route } from "+/route.customer.forgotPassword";
-import { ErrorBoundaryPage } from "~/client/pages/errorBoundary";
-import { ForgotPasswordPage } from "~/client/pages/forgotPassword";
+import type { Route } from "+/route.forgotPassword";
+import { PublicItemPage } from "~/client/pages/publicItem";
 import { ErrorHandlerAdapter } from "~/infra/adapters/errorHandlerAdapter";
 import { HttpAdapter } from "~/infra/adapters/httpAdapter";
 
 export function meta(props: Route.MetaArgs) {
-  return [{ title: `M2G2 | Esqueci minha senha` }];
+  return [{ title: `Museu | Item` }];
 }
 
 export async function action(props: Route.ActionArgs) {
@@ -16,10 +15,6 @@ export async function action(props: Route.ActionArgs) {
   }
 }
 
-export function ErrorBoundary() {
-  return <ErrorBoundaryPage />;
-}
-
-export default function ForgotPasswordRoute() {
-  return <ForgotPasswordPage />;
+export default function PublicItemRoute() {
+  return <PublicItemPage />;
 }

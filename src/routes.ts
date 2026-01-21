@@ -1,23 +1,21 @@
-import { type RouteConfig, index, layout, prefix, route } from "@react-router/dev/routes";
+import { type RouteConfig, index, layout, route } from "@react-router/dev/routes";
 
 export default [
   index("./main/routes/_index.ts"),
   route("api/file-upload", "./main/routes/api.fileUpload.ts"),
   route("api/logout-user", "./main/routes/api.logoutUser.ts"),
   
-  layout("./main/routes/layout.signLayout.tsx", [ 
-    ...prefix("customer", [
-      route("sign-in", "./main/routes/route.customer.signIn.tsx"),
-      route("forgot-password", "./main/routes/route.customer.forgotPassword.tsx"),
-      route("forgot-password/:forgotPasswordToken", "./main/routes/route.customer.changeForgotPassword.tsx"),
-    ]),
-    
-    ...prefix("admin", [
-      route("sign-in", "./main/routes/route.admin.signIn.tsx"),
-    ]),
+  layout("./main/routes/layout.signLayout.tsx", [
+    route("sign-in", "./main/routes/route.admin.signIn.tsx"),
+    route("forgot-password", "./main/routes/route.forgotPassword.tsx"),
+    route("change-forgot-password", "./main/routes/route.changeForgotPassword.tsx"),
+  ]),
+  
+  layout("./main/routes/layout.publicLayout.tsx", [
+    route("item/:id", "./main/routes/route.item.$id.tsx"),
   ]),
 
-  route("admin", "./main/routes/layout.adminLayout.tsx", [
+  route("panel", "./main/routes/layout.adminLayout.tsx", [
     route("dashboard", "./main/routes/route.admin.dashboard.tsx"),
     route("customers", "./main/routes/route.admin.customers.tsx"),
     route("wallets", "./main/routes/route.admin.wallets.tsx"),
@@ -30,7 +28,5 @@ export default [
 
   route("customer", "./main/routes/layout.customerLayout.tsx", [
     route("dashboard", "./main/routes/route.customer.dashboard.tsx"),
-    route("properties", "./main/routes/route.customer.properties.tsx"),
-    route("properties/:propertyId", "./main/routes/route.customer.property.tsx"),
   ]),
 ] satisfies RouteConfig;

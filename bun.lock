@@ -1,13 +1,14 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "m2g2",
       "dependencies": {
-        "@arkyn/components": "^3.0.1-beta.115",
-        "@arkyn/server": "^3.0.1-beta.115",
-        "@arkyn/shared": "^3.0.1-beta.115",
-        "@arkyn/templates": "^3.0.1-beta.114",
+        "@arkyn/components": "^3.0.1-beta.116",
+        "@arkyn/server": "^3.0.1-beta.116",
+        "@arkyn/shared": "^3.0.1-beta.116",
+        "@arkyn/templates": "^3.0.1-beta.116",
         "@aws-sdk/client-s3": "^3.970.0",
         "@linaria/core": "^6.3.0",
         "@linaria/react": "^6.3.0",

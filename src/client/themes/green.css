@@ -28,8 +28,8 @@
   --tooltip-background: #0f172a;
 
   /* spotlight */
-  --spotlight-primary: 87, 113, 119; /* #577177 */
-  --spotlight-secondary: 248, 250, 252; /* #f8fafc */
+  --spotlight-primary: 64, 64, 64; /* #404040 */
+  --spotlight-secondary: 186, 174, 141; /* #BAAE8D */
   --spotlight-success: 16, 185, 129; /* #10b981 */
   --spotlight-danger: 244, 63, 94; /* #f43f5e */
   --spotlight-info: 14, 165, 233; /* #0ea5e9 */
