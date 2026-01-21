@@ -16,6 +16,7 @@ export default [
   ]),
 
   route("panel", "./main/routes/layout.adminLayout.tsx", [
+    route("items", "./main/routes/route.panel.items.tsx"),
     route("dashboard", "./main/routes/route.admin.dashboard.tsx"),
     route("customers", "./main/routes/route.admin.customers.tsx"),
     route("wallets", "./main/routes/route.admin.wallets.tsx"),
@@ -26,7 +27,4 @@ export default [
     route("properties/:propertyId/update", "./main/routes/route.admin.updateProperty.tsx")
   ]),
 
-  route("customer", "./main/routes/layout.customerLayout.tsx", [
-    route("dashboard", "./main/routes/route.customer.dashboard.tsx"),
-  ]),
 ] satisfies RouteConfig;

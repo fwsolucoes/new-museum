@@ -5,17 +5,17 @@ import type { RouteDTO } from "../types/route";
 class AuthMiddleware {
   static async authenticate(route: RouteDTO) {
     const user = await AuthService.getAuthStorage(route);
-    if (!user) throw RedirectServerAdapter.to("/customer/sign-in");
+    if (!user) throw RedirectServerAdapter.to("/sign-in");
 
     const url = new URL(route.request.url);
     const routeBase = url.pathname.trim().split("/")[1];
 
     if (user.type === "customer" && routeBase === "admin") {
-      throw RedirectServerAdapter.to("/admin/sign-in");
+      throw RedirectServerAdapter.to("/sign-in");
     }
 
-    if (user.type === "admin" && routeBase === "customer") {
-      throw RedirectServerAdapter.to("/customer/sign-in");
+    if (user.type === "user" && routeBase === "customer") {
+      throw RedirectServerAdapter.to("/sign-in");
     }
 
     return user;

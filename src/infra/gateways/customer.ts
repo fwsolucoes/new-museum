@@ -12,10 +12,10 @@ import { JwtAdapter } from "../adapters/jwtAdapter";
 import { SchemaValidatorAdapter } from "../adapters/schemaValidatorAdapter";
 import { api } from "../http/api";
 import { CustomerMapper } from "../mappers/customer";
-import { externalTokenSchema } from "../schemas/external/admin";
 import {
   externalCustomersSchema,
   externalSignCustomerSchema,
+  externalTokenSchema,
 } from "../schemas/external/customer";
 
 class CustomerGateway implements CustomerGatewayDTO {

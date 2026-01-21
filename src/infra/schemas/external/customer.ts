@@ -3,6 +3,10 @@ import { externalPaginationSchema } from "./pagination";
 
 type ExternalCustomer = z.infer<typeof externalCustomerSchema>;
 
+const externalTokenSchema = z.strictObject({
+  jwt: z.string(),
+});
+
 const externalSignCustomerSchema = z.strictObject({
   id: z.uuidv7(),
   name: z.string(),
@@ -37,5 +41,6 @@ export {
   externalCustomerSchema,
   externalSignCustomerSchema,
   externalCustomersSchema,
+  externalTokenSchema,
   type ExternalCustomer,
 };

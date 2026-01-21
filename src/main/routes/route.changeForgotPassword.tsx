@@ -1,4 +1,4 @@
-import type { Route } from "+/route.customer.changeForgotPassword";
+import type { Route } from "+/route.changeForgotPassword";
 import { ChangeForgotPasswordPage } from "~/client/pages/changeForgotPassword";
 import { ErrorBoundaryPage } from "~/client/pages/errorBoundary";
 import { ErrorHandlerAdapter } from "~/infra/adapters/errorHandlerAdapter";

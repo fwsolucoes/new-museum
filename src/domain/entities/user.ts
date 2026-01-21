@@ -1,27 +1,26 @@
-type AdminConstructorProps = {
+type UserConstructorProps = {
   id: string;
   name: string;
   email: string;
   avatar: string;
 };
 
-type AdminRestoreProps = AdminConstructorProps;
+type UserRestoreProps = UserConstructorProps;
 
-class Admin {
+class User {
   id: string;
   name: string;
   email: string;
   avatar: string;
-
-  private constructor(props: AdminConstructorProps) {
+  private constructor(props: UserConstructorProps) {
     this.id = props.id;
     this.name = props.name;
     this.email = props.email;
     this.avatar = props.avatar;
   }
 
-  static restore(props: AdminRestoreProps): Admin {
-    return new Admin({
+  static restore(props: UserRestoreProps): User {
+    return new User({
       id: props.id,
       name: props.name,
       email: props.email,
@@ -39,4 +38,4 @@ class Admin {
   }
 }
 
-export { Admin };
+export { User };

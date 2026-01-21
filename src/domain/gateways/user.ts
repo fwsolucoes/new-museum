@@ -1,15 +1,15 @@
-import type { Admin } from "../entities/admin";
+import type { User } from "../entities/user";
 
-type SignAdminProps = {
+type SignUserProps = {
   email: string;
   password: string;
 };
 
-type AdminGatewayDTO = {
-  signAdmin: (input: SignAdminProps) => Promise<[Admin, string]>;
+type UserGatewayDTO = {
+  signUser: (input: SignUserProps) => Promise<[User, string]>;
   forgotPasswordToken: (email: string) => Promise<void>;
   changePasswordByToken: (token: string, newPassword: string) => Promise<void>;
   validateForgotPasswordToken: (token: string) => Promise<void>;
 };
 
-export type { AdminGatewayDTO, SignAdminProps };
+export type { UserGatewayDTO, SignUserProps };

@@ -54,8 +54,7 @@ class AuthService {
 
     const session = await getSession(route.request.headers.get("cookie"));
 
-    const redirectUrl =
-      user.type === "customer" ? "/customer/sign-in" : "/admin/sign-in";
+    const redirectUrl = "/sign-in";
 
     return redirect(redirectUrl, {
       headers: { "Set-Cookie": await destroySession(session) },

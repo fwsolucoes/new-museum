@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const signAdminSchema = z.object({
+const signUserSchema = z.object({
   email: z.email("E-mail inválido"),
   password: z.string().min(1, "Senha é obrigatória"),
 });
@@ -22,4 +22,4 @@ const changeForgotPasswordSchema = z
     path: ["confirmPassword"],
   });
 
-export { changeForgotPasswordSchema, forgotPasswordSchema, signAdminSchema };
+export { changeForgotPasswordSchema, forgotPasswordSchema, signUserSchema };

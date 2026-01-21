@@ -5,7 +5,7 @@ type User = {
   avatar: string;
   token: string;
   walletId: string | undefined;
-  type: "admin" | "customer";
+  type: "user" | "customer";
 };
 
 export type { User };

@@ -10,6 +10,7 @@ class EnvError extends Error {
 const environmentVariablesSchema = z.object({
   // API configuration
   API_URL: z.string(),
+  API_DATABASE: z.string().min(1),
 
   // Another configurations
   GOOGLE_API_KEY: z.string(),

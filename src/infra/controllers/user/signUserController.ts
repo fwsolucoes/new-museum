@@ -1,34 +1,34 @@
-import type { SignAdminUseCase } from "~/app/useCases/admin/signAdminUseCase";
+import type { SignUserUseCase } from "~/app/useCases/user/signUserUseCase";
 import { DecodeRequestBodyAdapter } from "~/infra/adapters/decodeRequestBodyAdapter";
 import { SchemaValidatorAdapter } from "~/infra/adapters/schemaValidatorAdapter";
-import { signAdminSchema } from "~/infra/schemas/internal/admin";
+import { signUserSchema } from "~/infra/schemas/internal/user";
 import { AuthService } from "~/infra/services/authService";
 import type { RouteDTO } from "~/main/types/route";
 
-class SignAdminController {
-  constructor(private signAdminUseCase: SignAdminUseCase) {}
+class SignUserController {
+  constructor(private signUserUseCase: SignUserUseCase) {}
 
   async handle(route: RouteDTO) {
     const body = await DecodeRequestBodyAdapter.decode(route.request);
 
-    const schemaValidator = new SchemaValidatorAdapter(signAdminSchema);
+    const schemaValidator = new SchemaValidatorAdapter(signUserSchema);
     const data = schemaValidator.validate(body);
-    const [admin, token] = await this.signAdminUseCase.execute(data);
+    const [user, token] = await this.signUserUseCase.execute(data);
 
     return await AuthService.setAuthStorage(
       route,
       {
-        avatar: admin.avatar,
-        email: admin.email,
-        id: admin.id,
-        name: admin.name,
+        avatar: user.avatar,
+        email: user.email,
+        id: user.id,
+        name: user.name,
         walletId: undefined,
-        type: "admin",
+        type: "user",
         token,
       },
-      "/panel/dashboard",
+      "/panel/items",
     );
   }
 }
 
-export { SignAdminController };
+export { SignUserController };
