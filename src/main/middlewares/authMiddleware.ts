@@ -7,17 +7,6 @@ class AuthMiddleware {
     const user = await AuthService.getAuthStorage(route);
     if (!user) throw RedirectServerAdapter.to("/sign-in");
 
-    const url = new URL(route.request.url);
-    const routeBase = url.pathname.trim().split("/")[1];
-
-    if (user.type === "customer" && routeBase === "admin") {
-      throw RedirectServerAdapter.to("/sign-in");
-    }
-
-    if (user.type === "user" && routeBase === "customer") {
-      throw RedirectServerAdapter.to("/sign-in");
-    }
-
     return user;
   }
 

@@ -18,13 +18,11 @@ class SignUserController {
     return await AuthService.setAuthStorage(
       route,
       {
-        avatar: user.avatar,
         email: user.email,
         id: user.id,
         name: user.name,
-        walletId: undefined,
-        type: "user",
         token,
+        accountId: user.accountId,
       },
       "/panel/items",
     );

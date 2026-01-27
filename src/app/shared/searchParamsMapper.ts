@@ -10,6 +10,7 @@ type PaginationFields = {
   page?: number;
   pageLimit?: number;
   sort?: string;
+  search?: string;
   sortDirection?: "asc" | "desc";
 };
 
@@ -21,22 +22,23 @@ class SearchParamsMapper {
     const scopedQuery = Object.fromEntries(
       Object.entries(query)
         .filter(([key]) => key.startsWith(`${scoped}:`))
-        .map(([key, value]) => [key.replace(`${scoped}:`, ""), value])
+        .map(([key, value]) => [key.replace(`${scoped}:`, ""), value]),
     );
 
     return { ...params, ...scopedQuery };
   }
 
   static toFilter<T extends Record<string, any>>(
-    input: T & Partial<PaginationFields>
+    input: T & Partial<PaginationFields>,
   ): {
     page?: number;
     pageLimit?: number;
     sort?: string;
     sortDirection?: "asc" | "desc";
+    search?: string;
     filter: Omit<T, keyof PaginationFields>;
   } {
-    const whiteList = ["page", "pageLimit", "sort", "sortDirection"];
+    const whiteList = ["page", "pageLimit", "sort", "sortDirection", "search"];
     const filter = {} as Omit<T, keyof PaginationFields>;
 
     Object.entries(input).forEach(([key, value]) => {
@@ -48,6 +50,7 @@ class SearchParamsMapper {
       pageLimit: input?.pageLimit,
       sort: input?.sort,
       sortDirection: input?.sortDirection,
+      search: input?.search,
       filter,
     };
   }

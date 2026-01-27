@@ -12,7 +12,7 @@ class UserGateway implements UserGatewayDTO {
     const apiResponse = await api.post(`/${env.API_DATABASE}/login`, {
       body: user,
     });
-    console.log("apiResponse", apiResponse);
+
     if (!apiResponse.success) throw HttpAdapter.badRequest(apiResponse.message);
 
     const schemaValidator = new SchemaValidatorAdapter(externalUserSchema);

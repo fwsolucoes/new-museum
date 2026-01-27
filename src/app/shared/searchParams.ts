@@ -6,14 +6,15 @@ type SearchParamsConstructorProps<Filter> = {
   sort?: string | null;
   sortDirection?: SortDirection | null;
   filter?: Filter | null;
+  search?: string | null;
 };
 
 type UnusableFilters<Filter> = Array<
-  "page" | "pageLimit" | "sort" | "sortDirection" | keyof Filter
+  "page" | "pageLimit" | "sort" | "sortDirection" | "search" | keyof Filter
 >;
 
 const PAGE_DEFAULT = 1;
-const PAGE_LIMIT_DEFAULT = 10;
+const PAGE_LIMIT_DEFAULT = 20;
 const SORT_DEFAULT = "createdAt";
 const SORT_DIRECTION_DEFAULT: SortDirection = "desc";
 const FILTER_DEFAULT = null;
@@ -24,6 +25,7 @@ class SearchParams<Filter extends Record<string, any>> {
   private _sort: string | null = SORT_DEFAULT;
   private _sortDirection: SortDirection = SORT_DIRECTION_DEFAULT;
   private _filter: Filter | null = FILTER_DEFAULT;
+  private _search: string | null = null;
 
   constructor(props?: SearchParamsConstructorProps<Filter>) {
     this.page = props?.page ?? PAGE_DEFAULT;
@@ -31,6 +33,7 @@ class SearchParams<Filter extends Record<string, any>> {
     this.sort = props?.sort ?? SORT_DEFAULT;
     this.sortDirection = props?.sortDirection ?? SORT_DIRECTION_DEFAULT;
     this.filter = props?.filter ?? null;
+    this.search = props?.search ?? null;
   }
 
   toExternal(unusableFilters?: UnusableFilters<Filter>): string {
@@ -41,18 +44,7 @@ class SearchParams<Filter extends Record<string, any>> {
     }
 
     if (!unusableFilters?.includes("pageLimit")) {
-      urlSearchParams.set("take", String(this._pageLimit));
-    }
-
-    if (!unusableFilters?.includes("sort")) {
-      // urlSearchParams.set("sort", this._sort || SORT_DEFAULT);
-    }
-
-    if (!unusableFilters?.includes("sortDirection")) {
-      // urlSearchParams.set(
-      //   "sortDirection",
-      //   this._sortDirection || SORT_DIRECTION_DEFAULT
-      // );
+      urlSearchParams.set("pageLimit", String(this._pageLimit));
     }
 
     if (this._filter) {
@@ -82,6 +74,10 @@ class SearchParams<Filter extends Record<string, any>> {
     return this._sortDirection;
   }
 
+  get search() {
+    return this._search;
+  }
+
   get filter() {
     return this._filter;
   }
@@ -106,6 +102,14 @@ class SearchParams<Filter extends Record<string, any>> {
     if (value === "") return;
     if (typeof value !== "string") return;
     this._sort = value?.trim() ?? SORT_DEFAULT;
+  }
+
+  protected set search(value: string | null) {
+    if (value === null) return;
+    if (value === undefined) return;
+    if (value === "") return;
+    if (typeof value !== "string") return;
+    this._search = value?.trim() ?? null;
   }
 
   protected set sortDirection(rawValue: SortDirection) {

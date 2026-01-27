@@ -9,18 +9,17 @@ import {
   TableHeader,
   useModal,
 } from "@arkyn/components";
-import { Eye, PencilLine, Search, Trash2 } from "lucide-react";
+import { Eye, PencilLine, QrCode, Search, Trash2 } from "lucide-react";
 import { useLoaderData, useNavigate } from "react-router";
 
 import { useFilter } from "~/client/hooks/useFilter";
 import { useUser } from "~/client/hooks/useUser";
 import { statusBadge } from "~/client/pages/dashboard/utilities/statusBadge";
-import type { PropertiesLoader } from "~/client/types/propertiesLoader";
+import type { ItemsLoader } from "~/client/types/itemsLoader";
 import { CaptionContainer, Container, FooterContainer } from "./styles";
 
 function Table() {
-  const { properties, wallets, propertyOwners } =
-    useLoaderData<PropertiesLoader>();
+  const { items } = useLoaderData<ItemsLoader>();
 
   const { openModal } = useModal();
   const navigate = useNavigate();
@@ -32,19 +31,7 @@ function Table() {
     handleChangeTimeoutFilter,
     handlePageChange,
     getParam,
-  } = useFilter("properties");
-
-  function getWalletId(data: string) {
-    const propertyOwner = propertyOwners.data.find(
-      (propertyOwner) => propertyOwner.id === data,
-    );
-
-    const wallet = wallets.data.find(
-      (wallet) => wallet.id === propertyOwner?.walletId,
-    );
-
-    return wallet?.name;
-  }
+  } = useFilter("items");
 
   return (
     <Container>
@@ -68,41 +55,43 @@ function Table() {
         </TableHeader>
 
         <TableBody>
-          {properties.data.map((property) => (
-            <tr key={property.id}>
-              <td>{property.name}</td>
-              <td>{property.fullAddress}</td>
-              <td>{getWalletId(property.propertyOwnerId)}</td>
-              <td>{statusBadge(property.status)}</td>
+          {items.data.map((item) => (
+            <tr key={item.id}>
+              <td>{item.name}</td>
+              <td>{item.createdAt}</td>
               <td>
                 <IconButton
                   aria-label="Visualizar imóvel"
                   icon={Eye}
                   variant="invisible"
                   scheme="info"
-                  onClick={() =>
-                    navigate(`/${user.type}/properties/${property.id}`)
-                  }
+                  onClick={() => navigate(`/item/${item.id}`)}
                 />
-
-                {showTo("admin") && [
-                  <IconButton
-                    aria-label="Atualizar imóvel"
-                    icon={PencilLine}
-                    variant="invisible"
-                    scheme="warning"
-                    onClick={() =>
-                      navigate(`/panel/properties/${property.id}/update`)
-                    }
-                  />,
-                  <IconButton
-                    aria-label="Deletar imóvel"
-                    icon={Trash2}
-                    variant="invisible"
-                    scheme="danger"
-                    onClick={() => openModal("delete-property", property)}
-                  />,
-                ]}
+                <IconButton
+                  aria-label="Visualizar imóvel"
+                  icon={QrCode}
+                  variant="invisible"
+                  scheme="success"
+                  // onClick={() =>
+                  //   navigate(`/item/${item.id}`)
+                  // }
+                />
+                <IconButton
+                  aria-label="Atualizar imóvel"
+                  icon={PencilLine}
+                  variant="invisible"
+                  scheme="warning"
+                  onClick={() => navigate(`/panel/item/${item.id}/update`)}
+                />
+                ,
+                <IconButton
+                  aria-label="Deletar imóvel"
+                  icon={Trash2}
+                  variant="invisible"
+                  scheme="danger"
+                  onClick={() => openModal("delete-property", item)}
+                />
+                ,
               </td>
             </tr>
           ))}
@@ -113,14 +102,13 @@ function Table() {
 
       <FooterContainer>
         <p>
-          Exibindo {properties.meta.page} de {properties.meta.totalPages}{" "}
-          páginas
+          Exibindo {items.meta.page} de {items.meta.totalPages} páginas
         </p>
 
         <Pagination
-          currentPage={properties.meta.page}
-          totalCountRegisters={properties.meta.totalItems}
-          registerPerPage={properties.meta.pageLimit}
+          currentPage={items.meta.page}
+          totalCountRegisters={items.meta.totalItems}
+          registerPerPage={items.meta.pageLimit}
           onChange={handlePageChange}
         />
       </FooterContainer>

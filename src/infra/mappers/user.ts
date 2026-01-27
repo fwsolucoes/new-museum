@@ -10,6 +10,7 @@ class UserMapper {
       name: externalUser.user.name,
       email: externalUser.user.email,
       avatar: defaultAvatar,
+      accountId: externalUser.user.accounts[0]?.id,
     });
   }
 }
