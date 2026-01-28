@@ -49,6 +49,14 @@ class Item {
     });
   }
 
+  private formatDate(date: string): string {
+    return new Date(date).toLocaleDateString("pt-BR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+  }
+
   toJson() {
     return {
       id: this.id,
@@ -59,7 +67,7 @@ class Item {
       type: this.type,
       code: this.code,
       audio: this.audio,
-      createdAt: this.createdAt,
+      createdAt: this.formatDate(this.createdAt),
     };
   }
 }

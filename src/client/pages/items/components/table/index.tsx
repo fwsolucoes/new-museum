@@ -83,7 +83,7 @@ function Table() {
                   scheme="warning"
                   onClick={() => navigate(`/panel/item/${item.id}/update`)}
                 />
-                ,
+
                 <IconButton
                   aria-label="Deletar imóvel"
                   icon={Trash2}
@@ -91,7 +91,6 @@ function Table() {
                   scheme="danger"
                   onClick={() => openModal("delete-property", item)}
                 />
-                ,
               </td>
             </tr>
           ))}
