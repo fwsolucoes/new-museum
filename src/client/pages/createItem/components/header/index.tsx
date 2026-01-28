@@ -8,15 +8,7 @@ function Header() {
 
   return (
     <Container>
-      <h1>Itens</h1>
-
-      <Button
-        leftIcon={Plus}
-        onClick={() => navigate(`/panel/item/new`)}
-        type="button"
-      >
-        Adicionar Item
-      </Button>
+      <h1>Adicionar item</h1>
     </Container>
   );
 }

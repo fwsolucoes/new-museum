@@ -26,9 +26,10 @@ const environmentVariablesSchema = z.object({
 
 function formatErrorMessage(error: z.ZodError) {
   const title = "Error validating env variables:";
-  const lines = Object.entries(error.flatten().fieldErrors).map(
-    ([key, value]) => `-> ${key}: ${value}`,
-  );
+  const lines = error.issues.map((issue) => {
+    const path = issue.path.join(".") || "root";
+    return `-> ${path}: ${issue.message}`;
+  });
   return [title, ...lines].join("\n");
 }
 
