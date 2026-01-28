@@ -1,12 +1,14 @@
-import { FormProvider, useAutomation } from "@arkyn/components";
-import { useActionData } from "react-router";
+import { Button, FormProvider, useAutomation } from "@arkyn/components";
+import { useActionData, useNavigation } from "react-router";
 
 import { CardForm } from "./components/cardForm";
 import { Header } from "./components/header";
 import { Container, Form } from "./styles";
+import { Check } from "lucide-react";
 
 function CreateItemPage() {
   const actionData = useActionData();
+  const navigation = useNavigation();
   useAutomation(actionData);
 
   return (
@@ -17,6 +19,14 @@ function CreateItemPage() {
         fieldErrors={actionData?.fieldErrors}
       >
         <CardForm />
+        <Button
+          name="_action"
+          value="createItem"
+          leftIcon={Check}
+          isLoading={navigation.state !== "idle"}
+        >
+          Adicionar
+        </Button>
       </FormProvider>
     </Container>
   );

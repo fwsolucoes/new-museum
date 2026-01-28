@@ -14,6 +14,10 @@ const Form = styled(RawForm)`
   display: flex;
   flex-direction: column;
   gap: 32px;
+
+  > .arkynButton {
+    margin-left: auto;
+  }
 `;
 
 export { Container, Form };

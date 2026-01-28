@@ -1,6 +1,7 @@
 import type { ItemSearchParams } from "~/app/search/ItemSearchParams";
 import type { SearchResult } from "~/app/shared/searchResult";
 import type { Item } from "../entities/item";
+import type { CreateItemType } from "~/infra/schemas/internal/item";
 
 type ItemGatewayDTO = {
   listItems: (
@@ -8,6 +9,11 @@ type ItemGatewayDTO = {
     token: string,
     accountId: string,
   ) => Promise<SearchResult<Item>>;
+  createItem: (
+    input: CreateItemType,
+    accountId: string,
+    token: string,
+  ) => Promise<void>;
 };
 
 export type { ItemGatewayDTO };

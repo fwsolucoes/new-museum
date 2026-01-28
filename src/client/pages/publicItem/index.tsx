@@ -17,27 +17,6 @@ import { BottomDrawer } from "~/client/components/bottomDrawer";
 function PublicItemPage() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
-  const translate = useTranslate("forgotPassword");
-
-  const data = useActionData();
-  const { state } = useNavigation();
-
-  const location = useLocation();
-  const scopedParams = useScopedParams(location.search);
-
-  const emailSent = scopedParams.getParam("emailSent");
-
-  if (emailSent === "true") {
-    return (
-      <PageContainer>
-        <div className="headerContainer">
-          <strong>{translate.sentTitle}</strong>
-          <p>{translate.sentDescription}</p>
-        </div>
-      </PageContainer>
-    );
-  }
-
   return (
     <PageContainer>
       <ItemImage

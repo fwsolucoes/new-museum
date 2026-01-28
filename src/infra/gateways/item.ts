@@ -8,6 +8,7 @@ import { SchemaValidatorAdapter } from "../adapters/schemaValidatorAdapter";
 import { api } from "../http/api";
 import { ItemMapper } from "../mappers/item";
 import { externalItemsSchema } from "../schemas/external/item";
+import type { CreateItemType } from "../schemas/internal/item";
 
 class ItemGateway implements ItemGatewayDTO {
   async listItems(
@@ -34,6 +35,32 @@ class ItemGateway implements ItemGatewayDTO {
         totalItems: externalItems.meta.totalItems,
       },
     });
+  }
+
+  async createItem(
+    body: CreateItemType,
+    accountId: string,
+    token: string,
+  ): Promise<void> {
+    const url = `/${env.API_DATABASE}/${accountId}/museumItems`;
+
+    const apiBody = {
+      type: 1,
+      code: body.code,
+      name: body.name,
+      description: body.description,
+      image: body.image || "",
+      audio: body.audio || "",
+    };
+
+    // console.log("API BODY:", apiBody);
+
+    const apiResponse = await api.post(url, {
+      body: apiBody,
+      token,
+    });
+
+    if (!apiResponse.success) throw HttpAdapter.badRequest(apiResponse.message);
   }
 }
 
