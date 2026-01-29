@@ -28,10 +28,18 @@ const updateItemSchema = z.object({
   video: z.string().optional(),
 });
 
+type DeleteItemType = z.infer<typeof deleteItemSchema>;
+
+const deleteItemSchema = z.object({
+  id: z.uuid("ID inválido"),
+});
+
 export {
   findAllItemsSchema,
   createItemSchema,
   updateItemSchema,
+  deleteItemSchema,
   type CreateItemType,
   type UpdateItemType,
+  type DeleteItemType,
 };

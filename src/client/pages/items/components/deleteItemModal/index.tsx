@@ -33,6 +33,7 @@ function DeleteItemModal() {
         </ModalContent>
 
         <ModalFooter>
+          <input type="hidden" name="id" value={modalData?.id} />
           <Button type="button" variant="outline" onClick={closeModal}>
             Cancelar
           </Button>

@@ -3,6 +3,7 @@ import type { SearchResult } from "~/app/shared/searchResult";
 import type { Item } from "../entities/item";
 import type {
   CreateItemType,
+  DeleteItemType,
   UpdateItemType,
 } from "~/infra/schemas/internal/item";
 
@@ -19,6 +20,7 @@ type ItemGatewayDTO = {
     token: string,
   ) => Promise<void>;
   update: (input: UpdateItemType, token: string) => Promise<void>;
+  delete: (input: DeleteItemType, token: string) => Promise<void>;
 };
 
 export type { ItemGatewayDTO };

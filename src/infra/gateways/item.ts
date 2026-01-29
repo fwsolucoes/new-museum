@@ -11,7 +11,11 @@ import {
   externalItemSchema,
   externalItemsSchema,
 } from "../schemas/external/item";
-import type { CreateItemType, UpdateItemType } from "../schemas/internal/item";
+import type {
+  CreateItemType,
+  DeleteItemType,
+  UpdateItemType,
+} from "../schemas/internal/item";
 
 class ItemGateway implements ItemGatewayDTO {
   async findAllByAccountId(
@@ -92,6 +96,16 @@ class ItemGateway implements ItemGatewayDTO {
 
     const apiResponse = await api.put(url, {
       body: apiBody,
+      token,
+    });
+
+    if (!apiResponse.success) throw HttpAdapter.badRequest(apiResponse.message);
+  }
+
+  async delete(body: DeleteItemType, token: string): Promise<void> {
+    const url = `/${env.API_DATABASE}/${body.id}/museumItems`;
+
+    const apiResponse = await api.delete(url, {
       token,
     });
 
