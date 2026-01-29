@@ -3,28 +3,35 @@ import {
   IconButton,
   Input,
   Pagination,
-  Select,
   TableBody,
   TableContainer,
   TableHeader,
   useModal,
+  useToast,
 } from "@arkyn/components";
 import { Eye, PencilLine, QrCode, Search, Trash2 } from "lucide-react";
-import { useLoaderData, useNavigate } from "react-router";
+import {
+  useLoaderData,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router";
 
+import { useEffect } from "react";
 import { useFilter } from "~/client/hooks/useFilter";
-import { useUser } from "~/client/hooks/useUser";
-import { statusBadge } from "~/client/pages/dashboard/utilities/statusBadge";
 import type { ItemsLoader } from "~/client/types/itemsLoader";
 import { CaptionContainer, Container, FooterContainer } from "./styles";
 
 function Table() {
   const { items } = useLoaderData<ItemsLoader>();
 
+  const { showToast } = useToast();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+
   const { openModal } = useModal();
   const navigate = useNavigate();
-
-  const { user, showTo } = useUser();
 
   const {
     handleChangeFilter,
@@ -32,6 +39,17 @@ function Table() {
     handlePageChange,
     getParam,
   } = useFilter("items");
+
+  useEffect(() => {
+    if (searchParams.get("created") === "true") {
+      showToast({
+        message: "Item criado com sucesso!",
+        type: "success",
+      });
+      searchParams.delete("created");
+      setSearchParams(searchParams);
+    }
+  }, [searchParams, showToast, navigate, location]);
 
   return (
     <Container>

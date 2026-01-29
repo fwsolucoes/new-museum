@@ -1,4 +1,4 @@
-import { loader } from "~/main/routes/route.panel.items";
+import { loader } from "~/main/routes/route.items";
 
 type ItemsLoader = Awaited<ReturnType<typeof loader>>;
 

@@ -7,7 +7,8 @@ class CreateUseCase {
 
   async execute(input: CreateItemType, accountId: string, token: string) {
     await this.itemGateway.create(input, accountId, token);
-    throw RedirectServerAdapter.to("/panel/items");
+
+    throw RedirectServerAdapter.to("/panel/items?created=true");
   }
 }
 
