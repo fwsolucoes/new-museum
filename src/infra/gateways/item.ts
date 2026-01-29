@@ -14,7 +14,7 @@ import {
 import type { CreateItemType } from "../schemas/internal/item";
 
 class ItemGateway implements ItemGatewayDTO {
-  async listItems(
+  async findAllByAccountId(
     searchParams: ItemSearchParams,
     accountId: string,
     token: string,
@@ -54,7 +54,7 @@ class ItemGateway implements ItemGatewayDTO {
     return ItemMapper.toEntity(externalItem);
   }
 
-  async createItem(
+  async create(
     body: CreateItemType,
     accountId: string,
     token: string,

@@ -4,13 +4,13 @@ import type { Item } from "../entities/item";
 import type { CreateItemType } from "~/infra/schemas/internal/item";
 
 type ItemGatewayDTO = {
-  listItems: (
+  findAllByAccountId: (
     searchParams: ItemSearchParams,
     token: string,
     accountId: string,
   ) => Promise<SearchResult<Item>>;
   findById: (token: string, itemId: string) => Promise<Item>;
-  createItem: (
+  create: (
     input: CreateItemType,
     accountId: string,
     token: string,

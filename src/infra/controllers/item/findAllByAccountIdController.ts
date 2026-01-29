@@ -1,12 +1,12 @@
 import { SearchParamsMapper } from "~/app/shared/searchParamsMapper";
-import type { ListItemsUseCase } from "~/app/useCases/items/listItemsUseCase";
+import type { FindAllByAccountIdUseCase } from "~/app/useCases/items/findAllByAccountIdUseCase";
 import { SchemaValidatorAdapter } from "~/infra/adapters/schemaValidatorAdapter";
-import { listItemSchema } from "~/infra/schemas/internal/item";
+import { findAllItemsSchema } from "~/infra/schemas/internal/item";
 import { AuthMiddleware } from "~/main/middlewares/authMiddleware";
 import type { RouteDTO } from "~/main/types/route";
 
-class ListItemsController {
-  constructor(private listItemsUseCase: ListItemsUseCase) {}
+class FindAllByAccountIdController {
+  constructor(private findAllByAccountIdUseCase: FindAllByAccountIdUseCase) {}
 
   async handle(route: RouteDTO) {
     const { token, accountId } = await AuthMiddleware.authenticate(route);
@@ -17,12 +17,12 @@ class ListItemsController {
       scoped: "items",
     });
 
-    const schemaValidator = new SchemaValidatorAdapter(listItemSchema);
+    const schemaValidator = new SchemaValidatorAdapter(findAllItemsSchema);
     const validatedParams = schemaValidator.validate(searchParams);
 
     const mappedFilter = SearchParamsMapper.toFilter(validatedParams);
 
-    const response = await this.listItemsUseCase.execute(
+    const response = await this.findAllByAccountIdUseCase.execute(
       mappedFilter,
       token,
       accountId,
@@ -32,4 +32,4 @@ class ListItemsController {
   }
 }
 
-export { ListItemsController };
+export { FindAllByAccountIdController };

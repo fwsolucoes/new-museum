@@ -4,7 +4,7 @@ import { DecodeActionAdapter } from "~/infra/adapters/decodeAction";
 import { ErrorHandlerAdapter } from "~/infra/adapters/errorHandlerAdapter";
 import { HttpAdapter } from "~/infra/adapters/httpAdapter";
 import { RouteAdapter } from "~/infra/adapters/routeAdapter";
-import { createItem } from "../factories/Item/createItemFactory";
+import { createItem } from "../factories/Item/createFactory";
 import { ErrorBoundaryPage } from "~/client/pages/errorBoundary";
 import { findById } from "../factories/Item/findByIdFactory";
 

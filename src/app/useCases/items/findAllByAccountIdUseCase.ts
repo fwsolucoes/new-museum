@@ -6,13 +6,13 @@ type InputProps = {
   search?: string | null;
 };
 
-class ListItemsUseCase {
+class FindAllByAccountIdUseCase {
   constructor(private itemGateway: ItemGatewayDTO) {}
 
   async execute(input: InputProps, token: string, accountId: string) {
     const { page, search } = input;
     const searchParams = new ItemSearchParams({ page, search });
-    const items = await this.itemGateway.listItems(
+    const items = await this.itemGateway.findAllByAccountId(
       searchParams,
       accountId,
       token,
@@ -21,4 +21,4 @@ class ListItemsUseCase {
   }
 }
 
-export { ListItemsUseCase };
+export { FindAllByAccountIdUseCase };

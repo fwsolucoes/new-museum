@@ -16,7 +16,7 @@ export default [
   ]),
 
   route("panel", "./main/routes/layout.adminLayout.tsx", [
-    route("items", "./main/routes/route.panel.items.tsx"),
+    route("items", "./main/routes/route.items.tsx"),
     route("item/new", "./main/routes/route.createItem.tsx"),
     route("item/:id/update", "./main/routes/route.updateItem.tsx"),
     route("dashboard", "./main/routes/route.admin.dashboard.tsx"),

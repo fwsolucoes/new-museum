@@ -1,10 +1,10 @@
-import type { Route } from "+/route.panel.items";
+import type { Route } from "+/route.items";
 import { ErrorBoundaryPage } from "~/client/pages/errorBoundary";
 import { ItemsPage } from "~/client/pages/items";
 
 import { RouteAdapter } from "~/infra/adapters/routeAdapter";
 
-import { listItems } from "../factories/Item/listItemsFactory";
+import { findAllByAccountId } from "../factories/Item/findAllByAccountIdFactory";
 
 export function meta(props: Route.MetaArgs) {
   return [{ title: "Museu | Items" }];
@@ -13,7 +13,7 @@ export function meta(props: Route.MetaArgs) {
 export async function loader(args: Route.LoaderArgs) {
   const adaptedRoute = await RouteAdapter.adaptRoute(args);
 
-  const items = await listItems.handle(adaptedRoute);
+  const items = await findAllByAccountId.handle(adaptedRoute);
 
   return { items };
 }

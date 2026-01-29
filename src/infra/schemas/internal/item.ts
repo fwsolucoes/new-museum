@@ -1,7 +1,7 @@
 import z from "zod";
 import { paginationSchema } from "./pagination";
 
-const listItemSchema = paginationSchema.extend({
+const findAllItemsSchema = paginationSchema.extend({
   search: z.string().optional(),
 });
 
@@ -16,4 +16,4 @@ const createItemSchema = z.object({
   video: z.string().optional(),
 });
 
-export { listItemSchema, createItemSchema, type CreateItemType };
+export { findAllItemsSchema, createItemSchema, type CreateItemType };
