@@ -10,21 +10,26 @@ import { Trash2 } from "lucide-react";
 import { Form, useNavigation } from "react-router";
 
 import { ModalContent } from "./styles";
+import { TrashDashedBorderCircle } from "~/client/components/TrashDashedBorderCircle";
 
-function DeleteProperty() {
-  const { modalIsOpen, modalData, closeModal } = useModal("delete-property");
+function DeleteItemModal() {
+  const { modalIsOpen, modalData, closeModal } = useModal("delete-item");
 
   const navigation = useNavigation();
 
   return (
     <FormProvider form={<Form method="post" />}>
       <ModalContainer isVisible={modalIsOpen} makeInvisible={closeModal}>
-        <ModalHeader>Deletar imóvel</ModalHeader>
+        <ModalHeader>Remover item</ModalHeader>
 
         <ModalContent>
-          <input type="hidden" name="id" value={modalData?.id} />
-          <Trash2 />
-          <p>Tem certeza que deseja deletar este imóvel?</p>
+          <TrashDashedBorderCircle />
+          <div className="textContent">
+            <strong>Deseja remover esse item?</strong>
+            <p>
+              O item <b>{modalData?.name}</b> será permanentemente removido.
+            </p>
+          </div>
         </ModalContent>
 
         <ModalFooter>
@@ -33,7 +38,7 @@ function DeleteProperty() {
           </Button>
           <Button
             name="_action"
-            value="deleteProperty"
+            value="deleteItem"
             scheme="danger"
             isLoading={navigation.state !== "idle"}
           >
@@ -45,4 +50,4 @@ function DeleteProperty() {
   );
 }
 
-export { DeleteProperty };
+export { DeleteItemModal };

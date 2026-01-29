@@ -115,7 +115,7 @@ function Table() {
                   icon={Trash2}
                   variant="invisible"
                   scheme="danger"
-                  onClick={() => openModal("delete-property", item)}
+                  onClick={() => openModal("delete-item", item)}
                 />
               </td>
             </tr>
