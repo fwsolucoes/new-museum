@@ -4,7 +4,7 @@ import { DecodeActionAdapter } from "~/infra/adapters/decodeAction";
 import { ErrorHandlerAdapter } from "~/infra/adapters/errorHandlerAdapter";
 import { HttpAdapter } from "~/infra/adapters/httpAdapter";
 import { RouteAdapter } from "~/infra/adapters/routeAdapter";
-import { createItem } from "../factories/Item/createFactory";
+import { updateItem } from "../factories/Item/updateFactory";
 import { ErrorBoundaryPage } from "~/client/pages/errorBoundary";
 import { findById } from "../factories/Item/findByIdFactory";
 
@@ -26,8 +26,8 @@ export async function action(args: Route.ActionArgs) {
 
   try {
     switch (_action) {
-      case "createItem":
-        return await createItem.handle(adaptedRoute);
+      case "updateItem":
+        return await updateItem.handle(adaptedRoute);
       default:
         throw HttpAdapter.notImplemented("Action not implemented");
     }

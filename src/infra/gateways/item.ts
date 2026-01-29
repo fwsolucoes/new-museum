@@ -11,7 +11,7 @@ import {
   externalItemSchema,
   externalItemsSchema,
 } from "../schemas/external/item";
-import type { CreateItemType } from "../schemas/internal/item";
+import type { CreateItemType, UpdateItemType } from "../schemas/internal/item";
 
 class ItemGateway implements ItemGatewayDTO {
   async findAllByAccountId(
@@ -71,6 +71,26 @@ class ItemGateway implements ItemGatewayDTO {
     };
 
     const apiResponse = await api.post(url, {
+      body: apiBody,
+      token,
+    });
+
+    if (!apiResponse.success) throw HttpAdapter.badRequest(apiResponse.message);
+  }
+
+  async update(body: UpdateItemType, token: string): Promise<void> {
+    const url = `/${env.API_DATABASE}/${body.id}/museumItems`;
+
+    const apiBody = {
+      type: 1,
+      code: body.code,
+      name: body.name,
+      description: body.description,
+      image: body.image || "",
+      audio: body.audio || "",
+    };
+
+    const apiResponse = await api.put(url, {
       body: apiBody,
       token,
     });

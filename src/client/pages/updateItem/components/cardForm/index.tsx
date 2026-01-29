@@ -19,6 +19,7 @@ function CardForm() {
 
   return (
     <Container>
+      <input type="hidden" name="id" defaultValue={item.id} />
       <FormContainer>
         <Input
           name="code"

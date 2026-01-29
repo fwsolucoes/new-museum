@@ -49,6 +49,14 @@ function Table() {
       searchParams.delete("created");
       setSearchParams(searchParams);
     }
+    if (searchParams.get("updated") === "true") {
+      showToast({
+        message: "Item atualizado com sucesso!",
+        type: "success",
+      });
+      searchParams.delete("updated");
+      setSearchParams(searchParams);
+    }
   }, [searchParams, showToast, navigate, location]);
 
   return (
