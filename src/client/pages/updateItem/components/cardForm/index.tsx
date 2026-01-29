@@ -10,24 +10,42 @@ import {
 
 import { AudioComponent, Container, FormContainer } from "./styles";
 import { useState } from "react";
+import { useLoaderData } from "react-router";
+import type { ItemLoader } from "~/client/types/itemLoader";
 
 function CardForm() {
+  const { item } = useLoaderData<ItemLoader>();
   const [activeTab, setActiveTab] = useState("audio-file");
 
   return (
     <Container>
       <FormContainer>
-        <Input name="code" label="Código:" showAsterisk />
+        <Input
+          name="code"
+          label="Código:"
+          showAsterisk
+          defaultValue={item.code}
+        />
 
-        <Input name="name" label="Nome:" showAsterisk />
+        <Input
+          name="name"
+          label="Nome:"
+          showAsterisk
+          defaultValue={item.name}
+        />
 
-        <RichText name="description" label="Descrição:" showAsterisk />
-
+        <RichText
+          name="description"
+          label="Descrição:"
+          showAsterisk
+          defaultValue={item.description}
+        />
         <ImageUpload
           name="image"
           action="/api/file-upload"
           label="Imagem:"
           acceptImage=".jpeg,.png"
+          defaultValue={item.image}
         />
 
         <div className="inputImageInfo">
@@ -39,7 +57,7 @@ function CardForm() {
           </p>
         </div>
 
-        {/* <Input name="video" label="Url do vídeo:" /> */}
+        {/* <Input name="video" label="Url do vídeo:" defaultValue={item.video} /> */}
 
         <AudioComponent>
           <FieldLabel htmlFor="audio">Áudio:</FieldLabel>
@@ -62,10 +80,15 @@ function CardForm() {
                   acceptAudio=".mp3"
                   selectAudioButtonText="Selecionar arquivo"
                   dropAudioText="Ou arraste e solte o arquivo aqui"
+                  defaultValue={item.audio}
                 />
               )}
               {activeTab === "url-audio" && (
-                <Input name="audio" placeholder="Url do arquivo de áudio" />
+                <Input
+                  name="audio"
+                  placeholder="Url do arquivo de áudio"
+                  defaultValue={item.audio}
+                />
               )}
               <div className="inputAudioInfo">
                 <p>

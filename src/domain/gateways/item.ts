@@ -9,6 +9,7 @@ type ItemGatewayDTO = {
     token: string,
     accountId: string,
   ) => Promise<SearchResult<Item>>;
+  findById: (token: string, itemId: string) => Promise<Item>;
   createItem: (
     input: CreateItemType,
     accountId: string,

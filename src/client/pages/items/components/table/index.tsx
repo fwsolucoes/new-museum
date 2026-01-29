@@ -61,14 +61,14 @@ function Table() {
               <td>{item.createdAt}</td>
               <td>
                 <IconButton
-                  aria-label="Visualizar imóvel"
+                  aria-label="Visualizar item"
                   icon={Eye}
                   variant="invisible"
                   scheme="info"
                   onClick={() => navigate(`/item/${item.id}`)}
                 />
                 <IconButton
-                  aria-label="Visualizar imóvel"
+                  aria-label="Visualizar item"
                   icon={QrCode}
                   variant="invisible"
                   scheme="success"
@@ -77,7 +77,7 @@ function Table() {
                   // }
                 />
                 <IconButton
-                  aria-label="Atualizar imóvel"
+                  aria-label="Atualizar item"
                   icon={PencilLine}
                   variant="invisible"
                   scheme="warning"
@@ -85,7 +85,7 @@ function Table() {
                 />
 
                 <IconButton
-                  aria-label="Deletar imóvel"
+                  aria-label="Deletar item"
                   icon={Trash2}
                   variant="invisible"
                   scheme="danger"

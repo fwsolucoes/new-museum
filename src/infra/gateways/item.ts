@@ -7,7 +7,10 @@ import { HttpAdapter } from "../adapters/httpAdapter";
 import { SchemaValidatorAdapter } from "../adapters/schemaValidatorAdapter";
 import { api } from "../http/api";
 import { ItemMapper } from "../mappers/item";
-import { externalItemsSchema } from "../schemas/external/item";
+import {
+  externalItemSchema,
+  externalItemsSchema,
+} from "../schemas/external/item";
 import type { CreateItemType } from "../schemas/internal/item";
 
 class ItemGateway implements ItemGatewayDTO {
@@ -37,6 +40,20 @@ class ItemGateway implements ItemGatewayDTO {
     });
   }
 
+  async findById(token: string, itemId: string): Promise<Item> {
+    let url = `/${env.API_DATABASE}/${itemId}/museumItems`;
+
+    const apiResponse = await api.get(url, { token });
+
+    if (!apiResponse.success) throw HttpAdapter.badRequest(apiResponse.message);
+
+    const schemaValidator = new SchemaValidatorAdapter(externalItemSchema);
+
+    const externalItem = schemaValidator.validate(apiResponse.response);
+
+    return ItemMapper.toEntity(externalItem);
+  }
+
   async createItem(
     body: CreateItemType,
     accountId: string,
@@ -52,8 +69,6 @@ class ItemGateway implements ItemGatewayDTO {
       image: body.image || "",
       audio: body.audio || "",
     };
-
-    // console.log("API BODY:", apiBody);
 
     const apiResponse = await api.post(url, {
       body: apiBody,
