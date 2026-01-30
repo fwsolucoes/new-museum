@@ -1,11 +1,4 @@
-import {
-  Building2,
-  Users,
-  Wallet,
-  BookUser,
-  LayoutGrid,
-  Images,
-} from "lucide-react";
+import { ImagePlus, Images } from "lucide-react";
 import { MenuContainer } from "./menuContainer";
 import { MenuLink } from "./menuLink";
 
@@ -15,18 +8,9 @@ function Menu() {
       <MenuLink to="/panel/items" icon={Images}>
         Itens
       </MenuLink>
-      {/* <MenuLink to="/panel/dashboard" icon={LayoutGrid}>
-        Dashboard
+      <MenuLink to="/panel/item/new" icon={ImagePlus}>
+        Adicionar item
       </MenuLink>
-      <MenuLink to="/panel/wallets" icon={Wallet}>
-        Carteira de imóveis
-      </MenuLink>
-      <MenuLink to="/panel/property-owners" icon={BookUser}>
-        Proprietários
-      </MenuLink>
-      <MenuLink to="/panel/customers" icon={Users}>
-        Usuários
-      </MenuLink> */}
     </MenuContainer>
   );
 }
