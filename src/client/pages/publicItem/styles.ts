@@ -26,14 +26,6 @@ const PageContainer = styled.section`
       color: var(--text-heading);
       text-align: center;
     }
-
-    p {
-      font-weight: 400;
-      font-size: 18px;
-      color: var(--text-muted);
-      text-align: center;
-      line-height: 130%;
-    }
   }
 
   @media (max-width: 830px) {
