@@ -15,7 +15,7 @@ function Menu() {
       <MenuLink to="/panel/items" icon={Images}>
         Itens
       </MenuLink>
-      <MenuLink to="/panel/dashboard" icon={LayoutGrid}>
+      {/* <MenuLink to="/panel/dashboard" icon={LayoutGrid}>
         Dashboard
       </MenuLink>
       <MenuLink to="/panel/wallets" icon={Wallet}>
@@ -26,7 +26,7 @@ function Menu() {
       </MenuLink>
       <MenuLink to="/panel/customers" icon={Users}>
         Usuários
-      </MenuLink>
+      </MenuLink> */}
     </MenuContainer>
   );
 }

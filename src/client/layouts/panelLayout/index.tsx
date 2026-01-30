@@ -3,7 +3,7 @@ import { Header } from "./components/header";
 import { Menu } from "./components/menu";
 import { Container, Content } from "./styles";
 
-function AdminLayout() {
+function PanelLayout() {
   return (
     <Container>
       <Header />
@@ -15,4 +15,4 @@ function AdminLayout() {
   );
 }
 
-export { AdminLayout };
+export { PanelLayout };
