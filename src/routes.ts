@@ -19,14 +19,7 @@ export default [
     route("items", "./main/routes/route.items.tsx"),
     route("item/new", "./main/routes/route.createItem.tsx"),
     route("item/:id/update", "./main/routes/route.updateItem.tsx"),
-    route("dashboard", "./main/routes/route.admin.dashboard.tsx"),
-    route("customers", "./main/routes/route.admin.customers.tsx"),
-    route("wallets", "./main/routes/route.admin.wallets.tsx"),
-    route("property-owners", "./main/routes/route.admin.propertyOwners.tsx"),
-    route("properties/:propertyId", "./main/routes/route.admin.property.tsx"),
-    route("properties", "./main/routes/route.admin.properties.tsx"),
-    route("properties/create", "./main/routes/route.admin.createProperty.tsx"),
-    route("properties/:propertyId/update", "./main/routes/route.admin.updateProperty.tsx")
+    
   ]),
 
 ] satisfies RouteConfig;
