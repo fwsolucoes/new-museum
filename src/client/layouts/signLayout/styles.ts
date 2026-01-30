@@ -1,6 +1,6 @@
 import { styled } from "@linaria/react";
 
-import showImagePng from "~/client/assets/show-image.png";
+import loginImagePng from "~/client/assets/login-image.png";
 import { screenBreakpoints } from "~/client/themes/screenBreakpoints";
 
 const LayoutContainer = styled.div`
@@ -26,7 +26,16 @@ const ContentContainer = styled.div`
       position: absolute;
       top: 56px;
       left: 56px;
-      height: 114px;
+      width: 120px;
+    }
+  }
+
+  ${screenBreakpoints.xxs} {
+    > a {
+      img {
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
   }
 `;
@@ -38,7 +47,7 @@ const HeroContainer = styled.div`
   gap: 14px;
 
   flex-direction: column;
-  background-image: url(${showImagePng});
+  background-image: url(${loginImagePng});
   background-size: cover;
   background-position: center;
 

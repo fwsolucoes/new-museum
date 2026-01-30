@@ -13,7 +13,7 @@ function SignLayout() {
       </ContentContainer>
 
       <HeroContainer>
-        <p>Projetamos os caminhos para a sua realização.</p>
+        {/* <p>Projetamos os caminhos para a sua realização.</p> */}
       </HeroContainer>
     </LayoutContainer>
   );

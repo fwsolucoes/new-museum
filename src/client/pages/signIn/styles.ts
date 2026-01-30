@@ -4,7 +4,7 @@ const PageContainer = styled.section`
   display: flex;
   flex-direction: column;
 
-  width: 538px;
+  width: 450px;
   padding: 24px;
   gap: 12px;
 
