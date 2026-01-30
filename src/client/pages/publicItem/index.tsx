@@ -14,13 +14,18 @@ import {
   ItemInfo,
   PageContainer,
 } from "./styles";
+import { EmptyImage } from "./components/EmptyImage";
 
 function PublicItemPage() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const { item } = useLoaderData<ItemLoader>();
   return (
     <PageContainer>
-      <ItemImage src={item.image} alt="Item Image" />
+      {item.image ? (
+        <ItemImage src={item.image} alt="Item Image" />
+      ) : (
+        <EmptyImage />
+      )}
 
       <ItemInfo>
         <h1>{item.name}</h1>
