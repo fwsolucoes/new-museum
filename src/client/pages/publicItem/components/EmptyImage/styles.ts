@@ -11,7 +11,7 @@ const Content = styled.div`
 
   background-color: var(--card);
 
-  border: 2px dashed var(--border);
+  border: 2px solid var(--border);
   border-radius: 8px;
 
   svg {
