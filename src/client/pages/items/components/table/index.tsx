@@ -9,7 +9,14 @@ import {
   useModal,
   useToast,
 } from "@arkyn/components";
-import { Eye, PencilLine, QrCode, Search, Trash2 } from "lucide-react";
+import {
+  Eye,
+  ImageOff,
+  PencilLine,
+  QrCode,
+  Search,
+  Trash2,
+} from "lucide-react";
 import {
   useLoaderData,
   useLocation,
@@ -20,7 +27,14 @@ import {
 import { useEffect } from "react";
 import { useFilter } from "~/client/hooks/useFilter";
 import type { ItemsLoader } from "~/client/types/itemsLoader";
-import { CaptionContainer, Container, FooterContainer } from "./styles";
+import {
+  CaptionContainer,
+  Container,
+  EmptyImage,
+  FooterContainer,
+  ItemImage,
+  NameTd,
+} from "./styles";
 
 function Table() {
   const { items } = useLoaderData<ItemsLoader>();
@@ -83,7 +97,16 @@ function Table() {
         <TableBody>
           {items.data.map((item) => (
             <tr key={item.id}>
-              <td>{item.name}</td>
+              <NameTd>
+                {item.image ? (
+                  <ItemImage src={item.image} alt="Item Image" />
+                ) : (
+                  <EmptyImage>
+                    <ImageOff />
+                  </EmptyImage>
+                )}
+                {item.name}
+              </NameTd>
               <td>{item.createdAt}</td>
               <td>
                 <IconButton

@@ -28,6 +28,36 @@ const CaptionContainer = styled(Form)`
   }
 `;
 
+const ItemImage = styled.img`
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+`;
+
+const NameTd = styled.td`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
+const EmptyImage = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--background);
+
+  svg {
+    color: rgb(var(--spotlight-primary));
+    width: 20px;
+    height: 20px;
+  }
+`;
+
 const FooterContainer = styled.footer`
   display: flex;
   align-items: center;
@@ -51,4 +81,11 @@ const FooterContainer = styled.footer`
   }
 `;
 
-export { CaptionContainer, Container, FooterContainer };
+export {
+  CaptionContainer,
+  Container,
+  EmptyImage,
+  FooterContainer,
+  ItemImage,
+  NameTd,
+};
