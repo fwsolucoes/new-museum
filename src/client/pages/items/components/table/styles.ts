@@ -41,6 +41,18 @@ const NameTd = styled.td`
   gap: 16px;
 `;
 
+const ActionTh = styled.th`
+  text-align: center !important;
+`;
+
+const ActionTd = styled.td`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+`;
+
 const EmptyImage = styled.div`
   display: flex;
   align-items: center;
@@ -88,4 +100,6 @@ export {
   FooterContainer,
   ItemImage,
   NameTd,
+  ActionTd,
+  ActionTh,
 };

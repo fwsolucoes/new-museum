@@ -28,6 +28,8 @@ import { useEffect } from "react";
 import { useFilter } from "~/client/hooks/useFilter";
 import type { ItemsLoader } from "~/client/types/itemsLoader";
 import {
+  ActionTd,
+  ActionTh,
   CaptionContainer,
   Container,
   EmptyImage,
@@ -91,7 +93,7 @@ function Table() {
           <th>Nome</th>
           <th>Cadastrado em</th>
 
-          <th>Ações</th>
+          <ActionTh>Ações</ActionTh>
         </TableHeader>
 
         <TableBody>
@@ -108,7 +110,7 @@ function Table() {
                 {item.name}
               </NameTd>
               <td>{item.createdAt}</td>
-              <td>
+              <ActionTd>
                 <IconButton
                   aria-label="Visualizar item"
                   icon={Eye}
@@ -140,7 +142,7 @@ function Table() {
                   scheme="danger"
                   onClick={() => openModal("delete-item", item)}
                 />
-              </td>
+              </ActionTd>
             </tr>
           ))}
         </TableBody>
