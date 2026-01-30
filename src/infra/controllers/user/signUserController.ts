@@ -22,6 +22,7 @@ class SignUserController {
         id: user.id,
         name: user.name,
         token,
+        avatar: user.avatar,
         accountId: user.accountId,
       },
       "/panel/items",
